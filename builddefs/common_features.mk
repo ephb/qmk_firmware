@@ -891,7 +891,7 @@ ifeq ($(strip $(USBPD_ENABLE)), yes)
 endif
 
 BLUETOOTH_ENABLE ?= no
-VALID_BLUETOOTH_DRIVER_TYPES := BluefruitLE RN42 custom
+VALID_BLUETOOTH_DRIVER_TYPES := BluefruitLE RN42 ITON_BT custom
 ifeq ($(strip $(BLUETOOTH_ENABLE)), yes)
     ifeq ($(filter $(strip $(BLUETOOTH_DRIVER)),$(VALID_BLUETOOTH_DRIVER_TYPES)),)
         $(call CATASTROPHIC_ERROR,Invalid BLUETOOTH_DRIVER,BLUETOOTH_DRIVER="$(BLUETOOTH_DRIVER)" is not a valid Bluetooth driver type)
@@ -912,6 +912,11 @@ ifeq ($(strip $(BLUETOOTH_ENABLE)), yes)
         OPT_DEFS += -DBLUETOOTH_RN42 -DHAL_USE_SERIAL=TRUE
         SRC += $(DRIVER_PATH)/bluetooth/rn42.c
         QUANTUM_LIB_SRC += uart.c
+    endif
+
+	ifeq ($(strip $(BLUETOOTH_DRIVER)), ITON_BT)
+        OPT_DEFS += -DBLUETOOTH_ITON_BT
+        SRC += $(DRIVER_PATH)/bluetooth/iton_bt.c
     endif
 endif
 
