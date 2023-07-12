@@ -4,6 +4,6 @@
 /**
  * SPI driver settings
  */
-#define SN32_SPI_USE_SPI0   TRUE
+#define SN32_SPI_USE_SPI0   FALSE
 
 #include_next <mcuconf.h>

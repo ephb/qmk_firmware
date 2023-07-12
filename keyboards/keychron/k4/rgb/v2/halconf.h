@@ -16,7 +16,7 @@
 /**
  * SPI driver settings
  */
-#define HAL_USE_SPI                     TRUE
+#define HAL_USE_SPI                     FALSE
 #define SPI_USE_MUTUAL_EXCLUSION        FALSE
 #define SPI_USE_WAIT                    FALSE
 #define SPI_USE_ASSERT_ON_ERROR         FALSE

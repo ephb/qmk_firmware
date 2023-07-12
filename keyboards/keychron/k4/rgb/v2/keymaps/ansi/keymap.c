@@ -12,11 +12,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include QMK_KEYBOARD_H
-#ifdef BLUETOOTH_ENABLE
-#include "iton_bt.h"
-#include "outputselect.h"
-#endif
-
+#include "../../../../../../drivers/bluetooth/iton_bt.h"
+#include "../../../../../../drivers/bluetooth/outputselect.h"
 #define BT_PRO1 BT_PROFILE1
 #define BT_PRO2 BT_PROFILE2
 #define BT_PRO3 BT_PROFILE3
@@ -81,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 void iton_bt_connection_successful() {
-    set_output(OUTPUT_BLUETOOTH);
+    setPinOutput(QK_OUTPUT_BLUETOOTH);
 }
 
 bool dip_switch_update_user(uint8_t index, bool active){
@@ -89,9 +86,9 @@ bool dip_switch_update_user(uint8_t index, bool active){
     case 0:
         #ifdef BLUETOOTH_ENABLE
         if (active) {
-            set_output(OUTPUT_NONE);
+            setPinOutput(OUTPUT_NONE);
         } else {
-            set_output(OUTPUT_USB);
+            setPinOutput(OUTPUT_USB);
         }
         #endif
       break;

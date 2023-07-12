@@ -15,10 +15,8 @@
  */
 
 #include "k4.h"
-#ifdef BLUETOOTH_ENABLE
 #include "outputselect.h"
 #include "iton_bt.h"
-#endif
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
