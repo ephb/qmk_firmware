@@ -9,11 +9,11 @@
 
 Make example for this keyboard (after setting up your build environment):
 
-    qmk compile keychron/k4/rgb/v2/ -km ansi
+    qmk compile -kb keychron/k4/rgb/v2/ -km ansi
 
 Make example for this keyboard (after setting up your build environment):
 
-    qmk compile keychron/k4/rgb/v2/via -km ansi
+    qmk compile -kb keychron/k4/rgb/v2/via -km ansi
 
 This keyboard must be flashed with an external [GUI](https://github.com/SonixQMK/sonix-flasher) or [CLI](https://github.com/SonixQMK/SonixFlasherC)
 
