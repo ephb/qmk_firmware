@@ -23,3 +23,5 @@
 #define MATRIX_ROWS 6
 #define MATRIX_COLS 19
 
+#define ITON_BT_ENABLE_ACK
+#define ITON_BT_IRQ_LINE A0

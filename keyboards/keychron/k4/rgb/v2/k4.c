@@ -15,8 +15,8 @@
  */
 
 #include "k4.h"
-#include "outputselect.h"
-#include "iton_bt.h"
+#include "../../../../../../drivers/bluetooth/iton_bt.h"
+#include "../../../../../../drivers/bluetooth/outputselect.h"
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
