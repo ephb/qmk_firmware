@@ -11,19 +11,22 @@
         "console": false,
         "extrakey": true,
         "mousekey": false,
-        "nkro": false,
-        "dip_switch": true
+        "nkro": false
     },
     "matrix_pins": {
         "cols": ["A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"],
         "rows": ["C15", "D11", "D10", "D9", "D8", "D7"]
     },
     "processor": "SN32F248BF",
-    "url": "",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0xFE06",
         "vid": "0x3434"
+    },
+    "indicators": {
+        "caps_lock": "B12",
+        "num_lock": "D4",
+        "on_state": 1
     },
     "layouts": {
         "LAYOUT_ansi": {

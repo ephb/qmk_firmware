@@ -7,13 +7,13 @@
 * Hardware Supported: *Keychron K4V2 RGB, MCU: SN32F248BF*
 * Hardware Availability: *https://www.keychron.com/products/keychron-k4-wireless-mechanical-keyboard-version-2*
 
-Make example for this keyboard (after setting up your build environment):
+Compile example for this keyboard (after setting up your build environment):
 
-    qmk compile -kb keychron/k4/rgb/v2/ -km ansi
+    qmk compile -kb keychron/k4/rgb/v2/ansi -km default
 
-Make example for this keyboard (after setting up your build environment):
+Compile example for this keyboard with VIA (after setting up your build environment):
 
-    qmk compile -kb keychron/k4/rgb/v2/via -km ansi
+    qmk compile -kb keychron/k4/rgb/v2/ansi -km via
 
 This keyboard must be flashed with an external [GUI](https://github.com/SonixQMK/sonix-flasher) or [CLI](https://github.com/SonixQMK/SonixFlasherC)
 
