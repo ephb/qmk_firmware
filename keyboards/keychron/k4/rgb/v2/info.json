@@ -18,11 +18,15 @@
         "rows": ["C15", "D11", "D10", "D9", "D8", "D7"]
     },
     "processor": "SN32F248BF",
-    "url": "",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0xFE06",
         "vid": "0x3434"
+    },
+    "indicators": {
+        "caps_lock": "B12",
+        "num_lock": "D4",
+        "on_state": 1
     },
     "layouts": {
         "LAYOUT_ansi": {
