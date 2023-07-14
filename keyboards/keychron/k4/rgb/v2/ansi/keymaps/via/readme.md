@@ -4,7 +4,7 @@ K4v2 Gateron RGB with VIA support
 
 Make example for this keyboard (after setting up your build environment):
 
-    make keychron/k4/v2/rgb/via:default
+    qmk compile -kb keychron/k4/v2/rgb/ansi -km via
     
 * * *
 
