@@ -14,11 +14,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "k4.c"
 #include "k4.h"
 
-#ifdef BLUETOOTH_ENABLE
 #include QMK_KEYBOARD_H
-#include "../../../../../../drivers/bluetooth/iton_bt.h"
-#include "../../../../../../drivers/bluetooth/outputselect.h"
-#endif
+#include "iton_bt.h"
+#include "outputselect.h"
 
 
 #define BT_PRO1 BT_PROFILE1
@@ -92,16 +90,14 @@ void iton_bt_connection_successful() {
 bool dip_switch_update_user(uint8_t index, bool active){
   switch(index){
     case 0:
-        #ifdef BLUETOOTH_ENABLE
-        if (active) {
-            set_output(OUTPUT_NONE);
-            iton_bt_mode_usb();
+      if (active) {
 
-        } else {
-            set_output(OUTPUT_USB);
-            iton_bt_mode_bt();
+        set_output(OUTPUT_NONE);
+        iton_bt_mode_bt();
+      } else {
+        set_output(OUTPUT_USB);
+        iton_bt_mode_usb();
         }
-        #endif
       break;
     case 1:
       if(active){ // Win/Android mode
@@ -118,6 +114,6 @@ void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
   debug_enable=true;
   debug_matrix=true;
-  //debug_keyboard=true;
+  debug_keyboard=true;
   //debug_mouse=true;
 }

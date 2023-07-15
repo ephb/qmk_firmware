@@ -15,13 +15,12 @@
  */
 
 #include "k4.h"
-#include "../../../../../../../drivers/bluetooth/iton_bt.h"
-#include "../../../../../../../drivers/bluetooth/outputselect.h"
+#include "iton_bt.h"
+#include "outputselect.h"
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         switch(keycode) {
-#ifdef BLUETOOTH_ENABLE
             case BT_PROFILE1:
                 iton_bt_switch_profile(0);
                 break;
@@ -34,7 +33,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             case BT_PAIR:
                 iton_bt_enter_pairing();
                 break;
-#endif
+
             default:
                 break;
         }

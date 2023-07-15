@@ -1,20 +1,27 @@
 /*
-Copyright 2021 Dimitris Mantzouranis
-
+Copyright 2020 Dimitris Mantzouranis
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "k4.c"
+#include "k4.h"
+
 #include QMK_KEYBOARD_H
+#include "iton_bt.h"
+#include "outputselect.h"
+
+
+#define BT_PRO1 BT_PROFILE1
+#define BT_PRO2 BT_PROFILE2
+#define BT_PRO3 BT_PROFILE3
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -68,22 +75,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*  Row:        0          1          2          3        4        5        6         7        8        9          10         11         12         13         14         15         16         17         18     */
     [_FL] =   { {     Q_RESET,  KC_SLCT,  KC_PAUS,   KC_APP,  _______,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE, KC_VOLD, KC_VOLU,  KC_INS,  KC_PSCR,  _______,  _______,  KC_SLEP,  RGB_TOG },
                 {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,     _______,   _______,  _______,    KC_NO,  _______,  _______,  _______,  RGB_HUI },
-                {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,     _______,   _______,  _______,    KC_NO,  _______,  _______,  _______,  RGB_SPI },
+                {   _______,  BT_PRO1,  BT_PRO2,  BT_PRO3,  _______,  _______,  _______,  _______,  _______,  _______,   BT_PAIR,     _______,   _______,  _______,    KC_NO,  _______,  _______,  _______,  RGB_SPI },
                 {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,     _______,     KC_NO,  _______,    KC_NO,  _______,  _______,  _______,    KC_NO },
                 {   _______,    KC_NO,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,     _______,     KC_NO,  _______,  _______,  _______,  _______,  _______,  RGB_SAI },
                 {   _______,  KC_LALT,  KC_LGUI,    KC_NO,    KC_NO,    KC_NO,  _______,    KC_NO,    KC_NO,    KC_NO,   _______,     MO(_FL),   _______,  _______,  _______,  _______,  _______,  _______,    KC_NO }
               }  
 
 };
+
+void iton_bt_connection_successful() {
+    set_output(OUTPUT_BLUETOOTH);
+}
+
 bool dip_switch_update_user(uint8_t index, bool active){
   switch(index){
     case 0:
-      if(active){ //BT mode
-// do stuff
-      }
-      else{ //Cable mode
-// do stuff
-      }
+        if (active) {
+            set_output(OUTPUT_NONE);
+            iton_bt_mode_usb();
+
+        } else {
+            set_output(OUTPUT_USB);
+            iton_bt_mode_bt();
+        }
       break;
     case 1:
       if(active){ // Win/Android mode
