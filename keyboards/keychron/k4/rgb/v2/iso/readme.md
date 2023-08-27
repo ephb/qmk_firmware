@@ -27,3 +27,6 @@ Enter the bootloader in 1 way:
 
 * **Physical Bootloader Pins**: Turn off the keyboard, Using a pair of tweezers or a paperclip, short the 2 pins next to boot and hold the tweezers on the pins while turning the keyboard on, this should put it into the bootloader.
 
+## Bluetooth
+
+Merged Iton Bluetooth driver by 1Conan
