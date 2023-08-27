@@ -151,7 +151,7 @@
             "properties": {
                 "driver": {
                     "type": "string",
-                    "enum": ["BluefruitLE", "RN42", "custom"]
+                    "enum": ["BluefruitLE", "RN42", "ItonBT" "custom"]
                 }
             }
         },
