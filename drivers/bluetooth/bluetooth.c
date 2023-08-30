@@ -21,6 +21,8 @@
 #    include "bluefruit_le.h"
 #elif defined(BLUETOOTH_RN42)
 #    include "rn42.h"
+#elif defined(BLUETOOTH_ITON_BT)
+#    include "iton_bt.h"
 #endif
 
 void bluetooth_init(void) {

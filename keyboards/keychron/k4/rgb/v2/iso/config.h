@@ -8,11 +8,13 @@
  *  These options are also useful to firmware size reduction.
  */
 
-
 /* LED Status indicators */
 
+// Connects each switch in the dip switch to the GPIO pin of the MCU
+#define DIP_SWITCH_PINS \
+    { D5, D6 }
 
-#define DIP_SWITCH_PINS { D5, D6 }
+// RGB LED Config
 #define RGB_MATRIX_LED_COUNT 101
 
 /* RGB Matrix Animation modes. Explicitly enabled
@@ -20,10 +22,10 @@
  * https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects
  */
 
-#    define RGB_MATRIX_KEYPRESSES
-#    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGB_MATRIX_KEYPRESSES
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 
-#define RGB_MATRIX_ROW_PINS { C3, C1, C0, C6, C5, C4, C9, C8, C7, C12, C11, C10, B13, C14, C13, B14, B15, D3 }
+#define RGB_MATRIX_ROW_PINS \
+    { C3, C1, C0, C6, C5, C4, C9, C8, C7, C12, C11, C10, B13, C14, C13, B14, B15, D3 }
 
 #define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
-
