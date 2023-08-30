@@ -121,9 +121,6 @@ void iton_bt_send(uint8_t cmd, uint8_t *data, uint8_t len);
 void iton_bt_send2(uint8_t cmd, uint8_t b1, uint8_t b2);
 void iton_bt_send_ack(uint8_t b1, uint8_t b2);
 
-void iton_bt_set_pin(uint8_t pin, bool value);
-void iton_bt_set_bt_name(char *name);
-
 void iton_bt_send_fn(bool pressed);
 void iton_bt_send_system(uint16_t data);
 void iton_bt_send_consumer(uint16_t data);

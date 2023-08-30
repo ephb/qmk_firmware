@@ -21,8 +21,6 @@
 #    include "bluefruit_le.h"
 #elif defined(BLUETOOTH_RN42)
 #    include "rn42.h"
-#elif defined(BLUETOOTH_ITONBT)
-#    include "iton_bt.h"
 #endif
 
 void bluetooth_init(void) {
@@ -30,8 +28,6 @@ void bluetooth_init(void) {
     bluefruit_le_init();
 #elif defined(BLUETOOTH_RN42)
     rn42_init();
-#elif defined(BLUETOOTH_ITONBT)
-    itonbt_init();
 #endif
 }
 
@@ -46,8 +42,6 @@ void bluetooth_send_keyboard(report_keyboard_t *report) {
     bluefruit_le_send_keyboard(report);
 #elif defined(BLUETOOTH_RN42)
     rn42_send_keyboard(report);
-#elif defined(BLUETOOTH_ITONBT)
-    itonbt_send_keyboard(report);
 #endif
 }
 
@@ -56,8 +50,6 @@ void bluetooth_send_mouse(report_mouse_t *report) {
     bluefruit_le_send_mouse(report);
 #elif defined(BLUETOOTH_RN42)
     rn42_send_mouse(report);
-#elif defined(BLUETOOTH_ITONBT)
-    itonbt_send_mouse(report);
 #endif
 }
 
@@ -66,7 +58,19 @@ void bluetooth_send_consumer(uint16_t usage) {
     bluefruit_le_send_consumer(usage);
 #elif defined(BLUETOOTH_RN42)
     rn42_send_consumer(usage);
-#elif defined(BLUETOOTH_ITONBT)
-    itonbt_send_consumer(usage);
+#endif
+}
+
+void bluetooth_send_system(uint16_t usage) {
+#if defined(BLUETOOTH_ITON_BT)
+    iton_bt_send_system(usage);
+#endif
+}
+
+uint8_t bluetooth_led_state(void) {
+#if defined(BLUETOOTH_ITON_BT)
+    return iton_bt_led_state;
+#else
+    return 0;
 #endif
 }

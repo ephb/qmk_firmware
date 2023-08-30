@@ -248,29 +248,3 @@ void iton_bt_send_keyboard(report_keyboard_t *report) {
 
     iton_bt_send(report_hid, &report->raw[HID_REPORT_OFFSET], 8);
 }
-
-// pin 0-3 = 26-29
-void iton_bt_set_pin(uint8_t pin, bool value) {
-    iton_bt_control(control_pins, (1 << pin) | (value << (pin + 4)));
-}
-
-#if ITON_BT_TX_BUFFER_LEN >= 35
-void iton_bt_set_bt_name(char *name) {
-    // Less than 32 octets
-    uint8_t length = strlen(name);
-    if (length > 31) return;
-
-    uint8_t data[34];
-
-    uint16_t checksum = 0;
-    for (uint8_t i = 0; i < length; i++) {
-        checksum += name[i];
-    }
-
-    data[0] = HIGH_BITS(checksum);
-    data[1] = LOW_BITS(checksum);
-    memcpy(&data[2], name, length);
-
-    iton_bt_send(set_name, &data[0], length + 2);
-}
-#endif
