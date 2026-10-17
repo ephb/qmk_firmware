@@ -128,3 +128,6 @@ compile_commands.json
 via*.json
 /keyboards/**/keymaps/via/*
 /keyboards/**/keymaps/vial/*
+
+# Local K4v2 ISO VIA + Bluetooth build configuration.
+!/keyboards/keychron/k4/rgb/v2/iso/keymaps/via/*

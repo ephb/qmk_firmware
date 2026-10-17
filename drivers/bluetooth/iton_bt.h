@@ -94,9 +94,9 @@ enum iton_bt_notification_param {
  * Exported Variables
  */
 #ifdef ITON_BT_ENABLE_LED_STATE
-uint8_t iton_bt_led_state;
+extern volatile uint8_t iton_bt_led_state;
 #endif
-bool iton_bt_is_connected;
+extern volatile bool iton_bt_is_connected;
 
 /**
  * Driver Callbacks
@@ -119,14 +119,24 @@ void iton_bt_enters_connection_state(void);
  * Driver Functions
  */
 void iton_bt_init(void);
+void iton_bt_deinit(void);
 void iton_bt_send(uint8_t cmd, uint8_t *data, uint8_t len);
 void iton_bt_send2(uint8_t cmd, uint8_t b1, uint8_t b2);
 void iton_bt_send_ack(uint8_t b1, uint8_t b2);
+void iton_bt_task(void);
+bool iton_bt_get_ack_enabled(void);
+void iton_bt_set_ack_enabled(bool enabled);
+void iton_bt_get_diagnostics(uint8_t data[10]);
 
 void iton_bt_send_fn(bool pressed);
 void iton_bt_send_system(uint16_t data);
 void iton_bt_send_consumer(uint16_t data);
 void iton_bt_send_keyboard(report_keyboard_t *report);
+
+#ifdef ITON_BT_DEBUG
+// Drain ISR diagnostic events from thread context only.
+void iton_bt_debug_task(void);
+#endif
 
 /**
  * Driver Macros

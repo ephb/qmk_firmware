@@ -38,6 +38,8 @@ void bluetooth_init(void) {
 void bluetooth_task(void) {
 #if defined(BLUETOOTH_BLUEFRUIT_LE)
     bluefruit_le_task();
+#elif defined(BLUETOOTH_ITON_BT)
+    iton_bt_task();
 #endif
 }
 
